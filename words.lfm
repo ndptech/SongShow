@@ -1,0 +1,15 @@
+object WordsForm: TWordsForm
+  Left = 938
+  Height = 365
+  Top = 250
+  Width = 625
+  BorderStyle = bsNone
+  Caption = 'WordsForm'
+  KeyPreview = True
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnKeyDown = FormKeyDown
+  OnPaint = FormPaint
+  OnShow = FormShow
+  LCLVersion = '2.0.12.0'
+end

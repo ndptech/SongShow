@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+  <Product Name="Song Show" Manufacturer="Porter Computing"
+    Id='FF81A6A3-BEEC-4B20-96DA-F5DD8B5C93D8'
+    UpgradeCode='8578B246-CFC8-4179-98EC-C2D5F9563C83'
+    Language='1033' Codepage='1252' Version='3.5.1'>
+    <Package Id='*' Keywords='Installer' Description='Song Show 3.5 Installer'
+      Comments='Dual Screen Song Presentation Software' Manufacturer='Porter Computing'
+      InstallerVersion='265' Languages='1033' Compressed='yes' SummaryCodepage='1252' InstallScope="perMachine" InstallPrivileges="elevated" />
+
+    <Upgrade Id='8578B246-CFC8-4179-98EC-C2D5F9563C83'>
+      <UpgradeVersion OnlyDetect='yes' Property='SELFFOUND'
+        Minimum='3.5.1' IncludeMinimum='yes' Maximum='3.5.1' IncludeMaximum='yes' />
+      <UpgradeVersion OnlyDetect='yes' Property='NEWERFOUND'
+        Minimum='3.5.1' IncludeMinimum='no' />
+      <UpgradeVersion OnlyDetect='no' Property='PREVIOUSFOUND'
+        Minimum='1.0.0' IncludeMinimum='yes' Maximum='3.5.1' IncludeMaximum='no' />
+    </Upgrade>
+
+    <CustomAction Id='AlreadyUpdated' Error='[ProductName] is already installed.' />
+    <CustomAction Id='NoDowngrade' Error='A later version of [ProductName] is already installed.' />
+
+    <Media Id='1' Cabinet='Songshow.cab' EmbedCab='yes' DiskPrompt='CD #1' />
+    <Property Id='DiskPrompt' Value='Song Show 3.4 Installation [1]' />
+    <Directory Id='TARGETDIR' Name='SourceDir'>
+      <Directory Id='ProgramFilesFolder' Name='PFiles'>
+        <Directory Id='PC' Name='PorterComputing'>
+          <Directory Id='INSTALLDIR' Name='SongShow'>
+            <Component Id='MainExecutable' Guid='ADBACCFE-291E-4150-8A66-26EC0CBF0DFF'>
+              <File Id='SongShowEXE' Name='SongShow.exe' DiskId='1' Source='SongShow.exe' KeyPath='yes'>
+                <Shortcut Id='startmenuSongShow' Directory='ProgramMenuDir' Name='Song Show'
+                  WorkingDirectory='INSTALLDIR' Icon='SongShowIcon.ico' IconIndex="0" Advertise='yes' />
+                <Shortcut Id='desktopSongShow' Directory='DesktopFolder' Name='Song Show'
+                  WorkingDirectory='INSTALLDIR' Icon='SongShowIcon.ico' IconIndex="0" Advertise='yes' />
+              </File>
+              <ProgId Id='SongShow.ssplfile' Description='Song Show Play List' Icon='SongShowEXE' IconIndex="0">
+                <Extension Id='sspl' ContentType='application/sspl'>
+                  <Verb Id='open' Command='Open' TargetFile='SongShowEXE' Argument='"%1"' />
+                </Extension>
+              </ProgId>
+            </Component>
+            <Component Id='SQLLibrary' Guid='ECC46E13-2E64-4E65-8BB4-EE515B161BCF'>
+              <File Id='SQLDLL' Name='sqlite3.dll' DiskId='1' Source='sqlite3.dll' KeyPath='yes' />
+            </Component>
+            <Component Id='SSLLibrary' Guid='92E20B04-67DE-44D0-8EA4-FF18CF76CA95'>
+              <File Id='SSLDLL' Name='ssleay32.dll' DiskId='1' Source='ssleay32.dll' KeyPath='yes' />
+              <File Id='LIBEAY' Name='libeay32.dll' DiskId='1' Source='libeay32.dll' />
+            </Component>
+            <Component Id='Manual' Guid='F4EC1056-D332-4584-92B3-FF578D5EA541'>
+              <File Id='ManualPDF' Name='Song Show V3 Instructions.pdf' DiskId='1' Source='Song Show V3 Instructions.pdf' KeyPath='yes'>
+                <Shortcut Id='startmenuManual' Directory='ProgramMenuDir' Name='Song Show Instructions' Advertise='yes' />
+              </File>
+            </Component>
+          </Directory>
+        </Directory>
+      </Directory>
+
+      <Directory Id="FontsFolder">
+        <Component Id="ArialNarrow" Guid='E47FD1CF-5AAF-4C95-B4E9-A94CDE773A5B'>
+          <File Id="ARIALN.TTF" Source="fonts\ARIALN.TTF" TrueType="yes" KeyPath='yes' />
+        </Component>
+        <Component Id="ArialNarrowBold" Guid='4B96ABAB-7315-49A2-AAEB-5815289683C1'>
+          <File Id="ARIALNB.TTF" Source="fonts\ARIALNB.TTF" TrueType="yes" KeyPath='yes' />
+        </Component>
+        <Component Id="ArialNarrowItalic" Guid='1BF238AD-F878-4B14-9890-92B65F6D9DF9'>
+          <File Id="ARIALNI.TTF" Source="fonts\ARIALNI.TTF" TrueType="yes" KeyPath='yes' />
+        </Component>
+        <Component Id="ArialNarrowBoldItalic" Guid='0E7DAF84-6747-41B5-8A0F-F8C44248D680'>
+          <File Id="ARIALNBI.TTF" Source="fonts\ARIALNBI.TTF" TrueType="yes" KeyPath='yes' />
+        </Component>
+        <Component Id="Korinna" Guid='5A38A57B-B139-4228-866C-DA1FF3ED40CA'>
+          <File Id="KORINAN.TTF" Source="fonts\KORINAN.TTF" TrueType="yes" KeyPath="yes" />
+        </Component> 
+        <Component Id="KorinnaBold" Guid='FB2079A8-D2B3-4C87-82B5-A6E881C70770'>
+          <File Id="KORINAB.TTF" Source="fonts\KORINAB.TTF" TrueType="yes" KeyPath="yes" />
+        </Component> 
+        <Component Id="KorinnaItalic" Guid='BEF1FC7F-D3FC-47D1-99DF-F36E422D3BEF'>
+          <File Id="KORINANI.TTF" Source="fonts\KORINANI.TTF" TrueType="yes" KeyPath="yes" />
+        </Component> 
+        <Component Id="KorinnaBoldItalic" Guid='B775AA72-99D4-4198-92C8-243BD9615B9E'>
+          <File Id="KORINABI.TTF" Source="fonts\KORINABI.TTF" TrueType="yes" KeyPath="yes" />
+        </Component> 
+      </Directory>
+
+      <Directory Id='ProgramMenuFolder' Name='Programs'>
+        <Directory Id='ProgramMenuDir' Name='Song Show'>
+          <Component Id='ProgramMenuDir' Guid='4920D824-F9E9-4099-A1A3-6C67E50F4341'>
+            <RemoveFolder Id='ProgramMenuDir' On='uninstall' />
+            <RegistryValue Root='HKCU' Key='Software\[Manufacturer]\[ProductName]' Type='string' Value='' KeyPath='yes' />
+          </Component>
+        </Directory>
+      </Directory>
+      <Directory Id="DesktopFolder" Name="Desktop" />
+    </Directory>
+
+    <Feature Id='Complete' Level='1'>
+      <ComponentRef Id='MainExecutable' />
+      <ComponentRef Id='SQLLibrary' />
+      <ComponentRef Id='SSLLibrary' />
+      <ComponentRef Id='Manual' />
+      <ComponentRef Id='ProgramMenuDir' />
+      <ComponentRef Id='ArialNarrow' />
+      <ComponentRef Id='ArialNarrowBold' />
+      <ComponentRef Id='ArialNarrowItalic' />
+      <ComponentRef Id='ArialNarrowBoldItalic' />
+      <ComponentRef Id='Korinna' />
+      <ComponentRef Id='KorinnaBold' />
+      <ComponentRef Id='KorinnaItalic' />
+      <ComponentRef Id='KorinnaBoldItalic' />
+    </Feature>
+
+    <InstallExecuteSequence>
+      <Custom Action='AlreadyUpdated' After='FindRelatedProducts'>SELFFOUND</Custom>
+      <Custom Action='NoDowngrade' After='FindRelatedProducts'>NEWERFOUND</Custom>
+      <RemoveExistingProducts Before="InstallInitialize" />
+    </InstallExecuteSequence>
+
+    <Icon Id='SongShowIcon.ico' SourceFile='SongShow.ico' />
+    <Property Id="ARPPRODUCTICON" Value="SongShowIcon.ico" />
+
+  </Product>
+</Wix>

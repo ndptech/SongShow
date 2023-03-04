@@ -1,0 +1,632 @@
+object ControlForm: TControlForm
+  Left = 656
+  Height = 581
+  Top = 208
+  Width = 779
+  ActiveControl = SearchString
+  Caption = 'Song Show'
+  ClientHeight = 561
+  ClientWidth = 779
+  Menu = MainMenu1
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnKeyDown = FormKeyDown
+  OnResize = ResultGridResize
+  OnShow = FormShow
+  LCLVersion = '2.0.10.0'
+  object ShowButton: TButton
+    Left = 8
+    Height = 25
+    Hint = 'Show or hide the song on the projector'
+    Top = 8
+    Width = 56
+    Caption = 'S&how'
+    OnClick = ShowButtonClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
+  end
+  object FilesList: TListBox
+    Left = 8
+    Height = 310
+    Top = 40
+    Width = 188
+    ItemHeight = 0
+    OnDblClick = FilesListDblClick
+    OnKeyDown = FilesListKeyDown
+    OnMouseDown = FilesListMouseDown
+    PopupMenu = FilesPopupMenu
+    ScrollWidth = 186
+    Sorted = True
+    TabOrder = 1
+  end
+  object SongControl: TLabeledEdit
+    Left = 148
+    Height = 23
+    Top = 8
+    Width = 48
+    EditLabel.Height = 15
+    EditLabel.Width = 70
+    EditLabel.Caption = 'Song &Control'
+    EditLabel.ParentColor = False
+    LabelPosition = lpLeft
+    LabelSpacing = 4
+    TabOrder = 2
+    OnKeyDown = SongControlKeyDown
+  end
+  object PlayList: TListBox
+    Left = 208
+    Height = 310
+    Top = 40
+    Width = 176
+    ItemHeight = 0
+    OnDblClick = PlayListDblClick
+    OnDragDrop = PlayListDragDrop
+    OnDragOver = PlayListDragOver
+    OnKeyDown = PlayListKeyDown
+    OnMouseDown = PlayListMouseDown
+    ScrollWidth = 174
+    TabOrder = 3
+  end
+  object SongSequence: TListBox
+    Left = 424
+    Height = 370
+    Top = 8
+    Width = 48
+    Enabled = False
+    ItemHeight = 0
+    MultiSelect = True
+    ScrollWidth = 46
+    TabOrder = 4
+  end
+  object InsertToPL: TSpeedButton
+    Left = 208
+    Height = 32
+    Hint = 'Add the current song to the play list'
+    Top = 4
+    Width = 32
+    Glyph.Data = {
+      36040000424D3604000000000000360000002800000010000000100000000100
+      2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF001177
+      110011771100117711001177110011771100117711BF117711FF117711FF1177
+      11BF1177110011771100117711001177110011771100FFFFFF00FFFFFF00147A
+      140055BB550055BB550055BB550055BB5500147A14FF55BB55FF55BB55FF147A
+      14FF55BB550055BB550055BB550055BB5500147A1400FFFFFF00FFFFFF00187E
+      180058BE580058BE580058BE580058BE5800187E18FF58BE58FF58BE58FF187E
+      18FF58BE580058BE580058BE580058BE5800187E1800FFFFFF00FFFFFF001D83
+      1D005CC25C005CC25C005CC25C005CC25C001D831DFF5CC25CFF5CC25CFF1D83
+      1DFF5CC25C005CC25C005CC25C005CC25C001D831D00FFFFFF00FFFFFF002389
+      230061C7610061C7610061C7610061C76100238923FF61C761FF61C761FF2389
+      23FF61C7610061C7610061C7610061C7610023892300FFFFFF00FFFFFF00298F
+      29BF2D932DFF329832FF389E38FF3FA53FFF44AA44FF66CC66FF66CC66FF44AA
+      44FF3FA53FFF389E38FF329832FF2D932DFF298F29BFFFFFFF00FFFFFF003096
+      30FF6CD26CFF6CD26CFF6CD26CFF6CD26CFF6CD26CFF6CD26CFF6CD26CFF6CD2
+      6CFF6CD26CFF6CD26CFF6CD26CFF6CD26CFF309630FFFFFFFF00FFFFFF00369C
+      36FF88EE88FF88EE88FF88EE88FF88EE88FF7DE37DFF71D771FF71D771FF7DE3
+      7DFF88EE88FF88EE88FF88EE88FF88EE88FF369C36FFFFFFFF00FFFFFF003DA3
+      3DBF40A640FF46AC46FF4CB24CFF51B751FF56BC56FF77DD77FF77DD77FF56BC
+      56FF51B751FF4CB24CFF46AC46FF40A640FF3DA33DBFFFFFFF00FFFFFF0043A9
+      43007CE27C007CE27C007CE27C007CE27C0043A943FF7CE27CFF7CE27CFF43A9
+      43FF7CE27C007CE27C007CE27C007CE27C0043A94300FFFFFF00FFFFFF0049AF
+      490081E7810081E7810081E7810081E7810049AF49FF81E781FF81E781FF49AF
+      49FF81E7810081E7810081E7810081E7810049AF4900FFFFFF00FFFFFF004EB4
+      4E0085EB850085EB850085EB850085EB85004EB44EFF85EB85FF85EB85FF4EB4
+      4EFF85EB850085EB850085EB850085EB85004EB44E00FFFFFF00FFFFFF0052B8
+      520088EE880088EE880088EE880088EE880052B852FF88EE88FF88EE88FF52B8
+      52FF88EE880088EE880088EE880088EE880052B85200FFFFFF00FFFFFF0055BB
+      550055BB550055BB550055BB550055BB550055BB55BF55BB55FF55BB55FF55BB
+      55BF55BB550055BB550055BB550055BB550055BB5500FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
+    }
+    OnClick = InsertToPLClick
+    ShowHint = True
+    ParentShowHint = False
+  end
+  object DeleteFromPL: TSpeedButton
+    Left = 251
+    Height = 32
+    Hint = 'Remove the selected song from the play list'
+    Top = 4
+    Width = 32
+    Glyph.Data = {
+      36040000424D3604000000000000360000002800000010000000100000000100
+      2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000022
+      CC000022CC800022CCFF0022CC400022CC000022CC000022CC000022CC000022
+      CC000022CC000022CC400022CCFF0022CC800022CC00FFFFFF00FFFFFF000325
+      CE800325CEFF3355FFFF0325CEFF0325CE403355FF003355FF003355FF003355
+      FF000325CE400325CEFF3355FFFF0325CEFF0325CE80FFFFFF00FFFFFF000729
+      D2FF88AAFFFF385AFFFF385AFFFF0729D2FF0729D240FFFFFF00FFFFFF000729
+      D2400729D2FF385AFFFF385AFFFF88AAFFFF0729D2FFFFFFFF00FFFFFF000C2E
+      D5400C2ED5FF88AAFFFF3E60FFFF3E60FFFF0C2ED5FF0C2ED5400C2ED5400C2E
+      D5FF3E60FFFF3E60FFFF88AAFFFF0C2ED5FF0C2ED540FFFFFF00FFFFFF001234
+      DA001234DA401234DAFF88AAFFFF4668FFFF4668FFFF1234DAFF1234DAFF4668
+      FFFF4668FFFF88AAFFFF1234DAFF1234DA401234DA00FFFFFF00FFFFFF00183A
+      DE00FFFFFF00183ADE40183ADEFF88AAFFFF4F71FFFF4F71FFFF4F71FFFF4F71
+      FFFF88AAFFFF183ADEFF183ADE40FFFFFF00183ADE00FFFFFF00FFFFFF001F41
+      E300FFFFFF00FFFFFF001F41E3401F41E3FF7193FFFF597BFFFF597BFFFF7193
+      FFFF1F41E3FF1F41E340FFFFFF00FFFFFF001F41E300FFFFFF00FFFFFF002547
+      E800FFFFFF00FFFFFF002547E8402547E8FF6284FFFF6284FFFF6284FFFF6284
+      FFFF2547E8FF2547E840FFFFFF00FFFFFF002547E800FFFFFF00FFFFFF002C4E
+      ED00FFFFFF002C4EED402C4EEDFF6C8EFFFF6C8EFFFF88AAFFFF88AAFFFF6C8E
+      FFFF6C8EFFFF2C4EEDFF2C4EED40FFFFFF002C4EED00FFFFFF00FFFFFF003254
+      F1003254F1403254F1FF7597FFFF7597FFFF88AAFFFF3254F1FF3254F1FF88AA
+      FFFF7597FFFF7597FFFF3254F1FF3254F1403254F100FFFFFF00FFFFFF00385A
+      F640385AF6FF7D9FFFFF7D9FFFFF88AAFFFF385AF6FF385AF640385AF640385A
+      F6FF88AAFFFF7D9FFFFF7D9FFFFF385AF6FF385AF640FFFFFF00FFFFFF003D5F
+      F9FF88AAFFFF83A5FFFF88AAFFFF3D5FF9FF3D5FF940FFFFFF00FFFFFF003D5F
+      F9403D5FF9FF88AAFFFF83A5FFFF88AAFFFF3D5FF9FFFFFFFF00FFFFFF004163
+      FD804163FDFF88AAFFFF4163FDFF4163FD40FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF004163FD404163FDFF88AAFFFF4163FDFF4163FD80FFFFFF00FFFFFF004466
+      FF004466FF804466FFFF4466FF404466FF004466FF004466FF004466FF004466
+      FF004466FF004466FF404466FFFF4466FF804466FF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
+    }
+    OnClick = DeleteFromPLClick
+    ShowHint = True
+    ParentShowHint = False
+  end
+  object MoveUpPL: TSpeedButton
+    Left = 309
+    Height = 32
+    Hint = 'Move the selected song up the play list'
+    Top = 4
+    Width = 32
+    Glyph.Data = {
+      36040000424D3604000000000000360000002800000010000000100000000100
+      2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00117711001177110011771100117711BF117711FF117711FF1177
+      11BF117711001177110011771100FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00147A1400147A140055BB5500147A14FF55BB55FF55BB55FF147A
+      14FF55BB5500147A1400147A1400FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00187E1800187E180058BE5800187E18FF58BE58FF58BE58FF187E
+      18FF58BE5800187E1800187E1800FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF001D831D001D831D005DC35D001D831DFF5DC35DFF5DC35DFF1D83
+      1DFF5DC35D001D831D001D831D00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00238923002389230062C86200238923FF62C862FF62C862FF2389
+      23FF62C862002389230023892300FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00298F2900298F290068CE6800298F29FF68CE68FF68CE68FF298F
+      29FF68CE6800298F2900298F2900FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF0030963000309630006FD46F00309630FF6FD46FFF6FD46FFF3096
+      30FF6FD46F003096300030963000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00369C3600369C360075DB7500369C36FF75DB75FF75DB75FF369C
+      36FF75DB7500369C3600369C3600FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF003DA33D003DA33D007BE17B003DA33DFF7BE17BFF7BE17BFF3DA3
+      3DFF7BE17B003DA33D003DA33D00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF0043A9438043A943FF43A943FF43A943FF80E680FF80E680FF43A9
+      43FF43A943FF43A943FF43A94380FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF0049AF490049AF49FF88EE88FF85EB85FF85EB85FF85EB85FF85EB
+      85FF88EE88FF49AF49FF49AF4900FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF004EB44E004EB44E004EB44EFF88EE88FF88EE88FF88EE88FF88EE
+      88FF4EB44EFF4EB44E004EB44E00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF0052B8520052B85200FFFFFF0052B852FF88EE88FF88EE88FF52B8
+      52FFFFFFFF0052B8520052B85200FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF0055BB550055BB550055BB550055BB550055BB55FF55BB55FF55BB
+      550055BB550055BB550055BB5500FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
+    }
+    OnClick = MoveUpPLClick
+    ShowHint = True
+    ParentShowHint = False
+  end
+  object MoveDownPL: TSpeedButton
+    Left = 352
+    Height = 32
+    Hint = 'Move the selected song down the play list'
+    Top = 4
+    Width = 32
+    Glyph.Data = {
+      36040000424D3604000000000000360000002800000010000000100000000100
+      2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF0011771100117711001177110011771100117711FF117711FF1177
+      1100117711001177110011771100FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00147A1400147A140055BB5500147A14FF45AB45FF45AB45FF147A
+      14FF55BB5500147A1400147A1400FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00187E1800187E1800187E18FF46AC46FF55BB55FF55BB55FF46AC
+      46FF187E18FF187E1800187E1800FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF001D831D001D831DFF88EE88FF70D670FF58BE58FF58BE58FF70D6
+      70FF88EE88FF1D831DFF1D831D00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF0023892380238923FF238923FF238923FF5DC35DFF5DC35DFF2389
+      23FF238923FF238923FF23892380FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00298F2900298F290062C86200298F29FF62C862FF62C862FF298F
+      29FF62C86200298F2900298F2900FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00309630003096300068CE6800309630FF68CE68FF68CE68FF3096
+      30FF68CE68003096300030963000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00369C3600369C36006FD46F00369C36FF6FD46FFF6FD46FFF369C
+      36FF6FD46F00369C3600369C3600FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF003DA33D003DA33D0075DB75003DA33DFF75DB75FF75DB75FF3DA3
+      3DFF75DB75003DA33D003DA33D00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF0043A9430043A943007BE17B0043A943FF7BE17BFF7BE17BFF43A9
+      43FF7BE17B0043A9430043A94300FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF0049AF490049AF490080E6800049AF49FF80E680FF80E680FF49AF
+      49FF80E6800049AF490049AF4900FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF004EB44E004EB44E0085EB85004EB44EFF85EB85FF85EB85FF4EB4
+      4EFF85EB85004EB44E004EB44E00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF0052B8520052B8520088EE880052B852FF88EE88FF88EE88FF52B8
+      52FF88EE880052B8520052B85200FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF0055BB550055BB550055BB550055BB55BF55BB55FF55BB55FF55BB
+      55BF55BB550055BB550055BB5500FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
+    }
+    OnClick = MoveDownPLClick
+    ShowHint = True
+    ParentShowHint = False
+  end
+  object SearchString: TLabeledEdit
+    Left = 208
+    Height = 23
+    Top = 355
+    Width = 176
+    EditLabel.Height = 15
+    EditLabel.Width = 35
+    EditLabel.Caption = 'Se&arch'
+    EditLabel.ParentColor = False
+    LabelPosition = lpLeft
+    LabelSpacing = 4
+    TabOrder = 5
+    OnKeyDown = SearchStringKeyDown
+  end
+  object PrevVerse: TMemo
+    Left = 480
+    Height = 78
+    Top = 52
+    Width = 290
+    Anchors = [akTop, akLeft, akRight]
+    ScrollBars = ssAutoBoth
+    TabOrder = 6
+    TabStop = False
+    WordWrap = False
+  end
+  object CurrVerse: TMemo
+    Left = 480
+    Height = 101
+    Top = 158
+    Width = 290
+    Anchors = [akTop, akLeft, akRight]
+    ScrollBars = ssAutoBoth
+    TabOrder = 7
+    TabStop = False
+    WordWrap = False
+  end
+  object LWarning: TLabel
+    Left = 480
+    Height = 15
+    Top = 8
+    Width = 50
+    Caption = 'LWarning'
+    Font.Color = clHighlight
+    ParentColor = False
+    ParentFont = False
+  end
+  object PrevVerseLab: TLabel
+    Left = 480
+    Height = 15
+    Top = 32
+    Width = 69
+    Caption = 'PrevVerseLab'
+    ParentColor = False
+  end
+  object CurrVerseLab: TLabel
+    Left = 480
+    Height = 15
+    Top = 138
+    Width = 69
+    Caption = 'CurrVerseLab'
+    ParentColor = False
+  end
+  object NextVerseLab: TLabel
+    Left = 480
+    Height = 15
+    Top = 268
+    Width = 71
+    Caption = 'NextVerseLab'
+    ParentColor = False
+  end
+  object NextVerse: TMemo
+    Left = 480
+    Height = 90
+    Top = 288
+    Width = 290
+    Anchors = [akTop, akLeft, akRight]
+    ScrollBars = ssAutoBoth
+    TabOrder = 9
+    TabStop = False
+    WordWrap = False
+  end
+  object LBCurrentMarker: TListBox
+    Left = 397
+    Height = 370
+    Top = 8
+    Width = 27
+    ItemHeight = 0
+    OnClick = LBCurrentMarkerClick
+    OnDblClick = LBCurrentMarkerDblClick
+    ScrollWidth = 25
+    TabOrder = 10
+  end
+  object ResultGrid: TStringGrid
+    Left = 8
+    Height = 170
+    Top = 384
+    Width = 762
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    AutoEdit = False
+    ColCount = 4
+    ColumnClickSorts = True
+    Columns = <    
+      item
+        Title.Caption = ''
+        Visible = False
+      end    
+      item
+        Title.Caption = 'First Line'
+      end    
+      item
+        Title.Caption = 'Chorus'
+      end    
+      item
+        Title.Caption = 'File'
+      end>
+    FixedCols = 0
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect, goSmoothScroll]
+    PopupMenu = ResultsPopupMenu
+    RowCount = 2
+    TabOrder = 8
+    TitleStyle = tsNative
+    OnDblClick = ResultGridDblClick
+    OnDrawCell = ResultGridDrawCell
+    OnKeyDown = ResultGridKeyDown
+    OnMouseDown = ResultGridMouseDown
+  end
+  object ScriptureButton: TButton
+    Left = 8
+    Height = 25
+    Top = 354
+    Width = 84
+    Caption = 'Script&ure'
+    OnClick = ScriptureButtonClick
+    TabOrder = 11
+  end
+  object SongShowConfig: TXMLConfig
+    StartEmpty = False
+    RootName = 'CONFIG'
+    ReadOnly = False
+    Left = 288
+    Top = 104
+  end
+  object DBConnection: TSQLite3Connection
+    Connected = False
+    LoginPrompt = False
+    KeepConnection = False
+    Transaction = SQLTransaction1
+    LogEvents = []
+    AlwaysUseBigint = False
+    Left = 736
+    Top = 8
+  end
+  object SQLMainQuery: TSQLQuery
+    FieldDefs = <>
+    Database = DBConnection
+    Transaction = SQLTransaction1
+    Params = <>
+    Left = 688
+    Top = 8
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = False
+    Database = DBConnection
+    Left = 712
+    Top = 8
+  end
+  object SQLUpdateQuery: TSQLQuery
+    FieldDefs = <>
+    Database = DBConnection
+    Transaction = SQLTransaction1
+    Params = <>
+    Left = 664
+    Top = 8
+  end
+  object SQLInsertQuery: TSQLQuery
+    FieldDefs = <>
+    Database = DBConnection
+    Transaction = SQLTransaction1
+    Params = <>
+    Left = 639
+    Top = 8
+  end
+  object SQLWordFind: TSQLQuery
+    FieldDefs = <>
+    Database = DBConnection
+    Transaction = SQLTransaction1
+    Params = <>
+    Left = 616
+    Top = 8
+  end
+  object SQLWordIns: TSQLQuery
+    FieldDefs = <>
+    Database = DBConnection
+    Transaction = SQLTransaction1
+    Params = <>
+    Left = 592
+    Top = 8
+  end
+  object SQLLastId: TSQLQuery
+    FieldDefs = <>
+    Database = DBConnection
+    Transaction = SQLTransaction1
+    Params = <>
+    Left = 568
+    Top = 8
+  end
+  object SaveDialog1: TSaveDialog
+    Left = 288
+    Top = 296
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 288
+    Top = 232
+  end
+  object SQLPhraseQuery: TSQLQuery
+    FieldDefs = <>
+    Database = DBConnection
+    Transaction = SQLTransaction1
+    Params = <>
+    Left = 544
+    Top = 8
+  end
+  object FilesPopupMenu: TPopupMenu
+    Left = 288
+    Top = 40
+    object FileMenuEdit: TMenuItem
+      Caption = '&Edit Song'
+      OnClick = FileMenuEditClick
+    end
+    object MenuItem1: TMenuItem
+      Caption = 'E&dit Source'
+      OnClick = MenuItem1Click
+    end
+    object MenuItem2: TMenuItem
+      Caption = '&Delete'
+      OnClick = MenuItem2Click
+    end
+    object FilesPublish: TMenuItem
+      Caption = '&Publish'
+      OnClick = FilesPublishClick
+    end
+  end
+  object MainMenu1: TMainMenu
+    Left = 288
+    Top = 168
+    object MenuItemFile: TMenuItem
+      Caption = '&File'
+      OnClick = MenuItemFileClick
+      object MenuItemNewSong: TMenuItem
+        Caption = 'New Song'
+        OnClick = MenuItemNewSongClick
+      end
+      object MenuItemNew: TMenuItem
+        Caption = 'Ne&w Source'
+        OnClick = NewSongClick
+      end
+      object MenuItemSongEdit: TMenuItem
+        Caption = '&Edit Song'
+        OnClick = MenuItemSongEditClick
+      end
+      object MenuItemEdit: TMenuItem
+        Caption = 'E&dit Source'
+        OnClick = EditButtonClick
+      end
+      object MenuItemPublish: TMenuItem
+        Caption = 'P&ublish'
+        Enabled = False
+        OnClick = MenuItemPublishClick
+      end
+      object MenuItemLoadPL: TMenuItem
+        Caption = '&Load Playlist'
+        OnClick = LoadPLButtonClick
+      end
+      object MenuItemSavePL: TMenuItem
+        Caption = '&Save Playlist'
+        OnClick = SavePLButtonClick
+      end
+      object MenuItemIDXExport: TMenuItem
+        Caption = 'Export Inde&x'
+        OnClick = IdxExpButtonClick
+      end
+      object MenuItemImgExp: TMenuItem
+        Caption = '&Image Export'
+        OnClick = BIngExpClick
+      end
+      object MenuItemLoadBible: TMenuItem
+        Caption = 'Load &Bible'
+        OnClick = MenuItemLoadBibleClick
+      end
+      object MenuItemExit: TMenuItem
+        Caption = 'E&xit'
+        OnClick = MenuItemExitClick
+      end
+    end
+    object MenuItem3: TMenuItem
+      Caption = '&Tools'
+      object MenuItemSetup: TMenuItem
+        Caption = '&Setup'
+        OnClick = SetupButtonClick
+      end
+      object MenuItemSync: TMenuItem
+        Caption = 'S&ync Songs'
+        OnClick = SyncSongsButtonClick
+      end
+      object MenuItemScan: TMenuItem
+        Caption = 'Scan S&ongs'
+        OnClick = ScanSongsClick
+      end
+    end
+    object MenuItemCCL: TMenuItem
+      Caption = 'CC&L'
+      object MenuItemCCLStart: TMenuItem
+        Caption = 'St&art Recording'
+        OnClick = MenuItemCCLStartClick
+      end
+      object MenuItemCCLStop: TMenuItem
+        Caption = 'St&op Recording'
+        OnClick = MenuItemCCLStopClick
+      end
+      object MenuItemCCLExport: TMenuItem
+        Caption = '&Export Report'
+        OnClick = MenuItemCCLExportClick
+      end
+    end
+  end
+  object SQLBibleUpd: TSQLQuery
+    FieldDefs = <>
+    Database = DBConnection
+    Transaction = SQLTransaction1
+    Params = <>
+    Left = 544
+    Top = 64
+  end
+  object SQLBibleIns: TSQLQuery
+    FieldDefs = <>
+    Database = DBConnection
+    Transaction = SQLTransaction1
+    Params = <>
+    Left = 568
+    Top = 64
+  end
+  object ResultsPopupMenu: TPopupMenu
+    Left = 333
+    Top = 482
+    object ResMenuEditSong: TMenuItem
+      Caption = '&Edit Song'
+      OnClick = ResMenuEditSongClick
+    end
+    object ResMenuEditSource: TMenuItem
+      Caption = 'E&dit Source'
+      OnClick = ResMenuEditSourceClick
+    end
+    object ResMenuAdd: TMenuItem
+      Caption = '&Add to Play List'
+      OnClick = ResMenuAddClick
+    end
+    object ResMenuCCL: TMenuItem
+      Caption = '&CCL Record'
+      OnClick = ResMenuCCLClick
+    end
+    object ResMenuCCLRem: TMenuItem
+      Caption = 'CCL &Remove'
+      OnClick = ResMenuCCLRemClick
+    end
+  end
+end

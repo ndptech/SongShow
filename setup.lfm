@@ -1,0 +1,592 @@
+object SetupForm: TSetupForm
+  Left = 568
+  Height = 580
+  Top = 179
+  Width = 541
+  Caption = 'Song Show Settings'
+  ClientHeight = 580
+  ClientWidth = 541
+  OnCreate = FormCreate
+  OnShow = FormShow
+  LCLVersion = '2.0.10.0'
+  object SetVerseFont: TButton
+    Left = 8
+    Height = 25
+    Top = 8
+    Width = 96
+    Caption = '&Verse Font'
+    OnClick = SetVerseFontClick
+    TabOrder = 0
+  end
+  object VerseFontSample: TLabel
+    Left = 112
+    Height = 15
+    Top = 12
+    Width = 97
+    Caption = 'VerseFontSample'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object SetChorusFont: TButton
+    Left = 8
+    Height = 25
+    Top = 40
+    Width = 96
+    Caption = '&Chorus Font'
+    OnClick = SetChorusFontClick
+    TabOrder = 1
+  end
+  object ChorusFontSample: TLabel
+    Left = 112
+    Height = 15
+    Top = 44
+    Width = 106
+    Caption = 'ChorusFontSample'
+    Font.Style = [fsBold, fsItalic]
+    ParentColor = False
+    ParentFont = False
+  end
+  object CBFontSize: TComboBox
+    Left = 112
+    Height = 23
+    Top = 70
+    Width = 100
+    ItemHeight = 15
+    Items.Strings = (
+      '10'
+      '12'
+      '14'
+      '16'
+      '18'
+      '20'
+      '22'
+      '24'
+      '26'
+      '28'
+      '32'
+      '36'
+      '40'
+      '44'
+      '48'
+      '56'
+      '62'
+      '72'
+      '84'
+      '96'
+    )
+    TabOrder = 2
+    Text = 'CBFontSize'
+  end
+  object LblFontSize: TLabel
+    Left = 8
+    Height = 15
+    Top = 76
+    Width = 77
+    Caption = 'Song &Font Size'
+    FocusControl = CBFontSize
+    ParentColor = False
+  end
+  object SetFGColour: TButton
+    Left = 8
+    Height = 25
+    Top = 164
+    Width = 96
+    Caption = '&Text'
+    OnClick = SetFGColourClick
+    TabOrder = 5
+  end
+  object FGColourSample: TShape
+    Left = 112
+    Height = 20
+    Top = 168
+    Width = 100
+    Brush.Color = clLime
+  end
+  object SetBGColour: TButton
+    Left = 8
+    Height = 25
+    Top = 196
+    Width = 96
+    Caption = 'Back&ground'
+    OnClick = SetBGColourClick
+    TabOrder = 6
+  end
+  object BGColourSample: TShape
+    Left = 112
+    Height = 20
+    Top = 198
+    Width = 100
+  end
+  object CCLNo: TEdit
+    Left = 112
+    Height = 23
+    Top = 344
+    Width = 127
+    TabOrder = 10
+    Text = 'CCLNo'
+  end
+  object LBLCCL: TLabel
+    Left = 8
+    Height = 15
+    Top = 348
+    Width = 41
+    Caption = 'CCL &No'
+    FocusControl = CCLNo
+    ParentColor = False
+  end
+  object SetSongDir: TButton
+    Left = 8
+    Height = 25
+    Top = 380
+    Width = 96
+    Caption = 'Songs &Folder'
+    OnClick = SetSongDirClick
+    TabOrder = 11
+  end
+  object SongDir: TLabel
+    Left = 112
+    Height = 15
+    Top = 384
+    Width = 42
+    Caption = 'SongDir'
+    ParentColor = False
+  end
+  object Label1: TLabel
+    Left = 392
+    Height = 15
+    Top = 12
+    Width = 43
+    Caption = 'Margins'
+    ParentColor = False
+  end
+  object MargTop: TLabeledEdit
+    Left = 392
+    Height = 23
+    Top = 40
+    Width = 48
+    EditLabel.Height = 15
+    EditLabel.Width = 19
+    EditLabel.Caption = '&Top'
+    EditLabel.ParentColor = False
+    LabelPosition = lpLeft
+    LabelSpacing = 4
+    TabOrder = 12
+    Text = 'MargTop'
+  end
+  object MargLeft: TLabeledEdit
+    Left = 483
+    Height = 23
+    Top = 40
+    Width = 48
+    EditLabel.Height = 15
+    EditLabel.Width = 20
+    EditLabel.Caption = '&Left'
+    EditLabel.ParentColor = False
+    LabelPosition = lpLeft
+    LabelSpacing = 4
+    TabOrder = 13
+    Text = 'MargLeft'
+  end
+  object MargBot: TLabeledEdit
+    Left = 392
+    Height = 23
+    Top = 76
+    Width = 48
+    EditLabel.Height = 15
+    EditLabel.Width = 40
+    EditLabel.Caption = '&Bottom'
+    EditLabel.ParentColor = False
+    LabelPosition = lpLeft
+    LabelSpacing = 4
+    TabOrder = 14
+    Text = 'MargBot'
+  end
+  object MargRight: TLabeledEdit
+    Left = 483
+    Height = 23
+    Top = 76
+    Width = 48
+    EditLabel.Height = 15
+    EditLabel.Width = 28
+    EditLabel.Caption = '&Right'
+    EditLabel.ParentColor = False
+    LabelPosition = lpLeft
+    LabelSpacing = 4
+    TabOrder = 15
+    Text = 'MargRight'
+  end
+  object SetupSave: TButton
+    Left = 457
+    Height = 25
+    Top = 546
+    Width = 75
+    Anchors = [akRight, akBottom]
+    Caption = '&Save'
+    OnClick = SetupSaveClick
+    TabOrder = 24
+  end
+  object SetOLColour: TButton
+    Left = 8
+    Height = 25
+    Top = 228
+    Width = 96
+    Caption = '&Outline'
+    OnClick = SetOLColourClick
+    TabOrder = 7
+  end
+  object OLColourSample: TShape
+    Left = 112
+    Height = 20
+    Top = 230
+    Width = 100
+  end
+  object OLSize: TTrackBar
+    Left = 232
+    Height = 49
+    Top = 228
+    Width = 100
+    Max = 20
+    Position = 0
+    ScalePos = trBottom
+    TabOrder = 8
+  end
+  object Label2: TLabel
+    Left = 392
+    Height = 15
+    Top = 106
+    Width = 72
+    Caption = 'Words Screen'
+    ParentColor = False
+  end
+  object WordTop: TLabeledEdit
+    Left = 392
+    Height = 23
+    Top = 128
+    Width = 48
+    EditLabel.Height = 15
+    EditLabel.Width = 19
+    EditLabel.Caption = 'To&p'
+    EditLabel.ParentColor = False
+    LabelPosition = lpLeft
+    LabelSpacing = 4
+    TabOrder = 16
+    Text = 'WordTop'
+  end
+  object WordLeft: TLabeledEdit
+    Left = 483
+    Height = 23
+    Top = 128
+    Width = 48
+    EditLabel.Height = 15
+    EditLabel.Width = 20
+    EditLabel.Caption = 'L&eft'
+    EditLabel.ParentColor = False
+    LabelPosition = lpLeft
+    LabelSpacing = 4
+    TabOrder = 17
+    Text = 'WordLeft'
+  end
+  object WordHeight: TLabeledEdit
+    Left = 483
+    Height = 23
+    Top = 164
+    Width = 48
+    EditLabel.Height = 15
+    EditLabel.Width = 36
+    EditLabel.Caption = '&Height'
+    EditLabel.ParentColor = False
+    LabelPosition = lpLeft
+    LabelSpacing = 5
+    TabOrder = 19
+    Text = 'WordHeight'
+  end
+  object WordWidth: TLabeledEdit
+    Left = 392
+    Height = 23
+    Top = 164
+    Width = 48
+    EditLabel.Height = 15
+    EditLabel.Width = 32
+    EditLabel.Caption = '&Width'
+    EditLabel.ParentColor = False
+    LabelPosition = lpLeft
+    LabelSpacing = 4
+    TabOrder = 18
+    Text = 'WordWidth'
+  end
+  object LinesPerScreen: TLabeledEdit
+    Left = 483
+    Height = 23
+    Top = 200
+    Width = 48
+    EditLabel.Height = 15
+    EditLabel.Width = 115
+    EditLabel.Caption = 'Song Lines &Per Screen'
+    EditLabel.ParentColor = False
+    LabelPosition = lpLeft
+    LabelSpacing = 4
+    TabOrder = 20
+    Text = 'LinesPerScreen'
+  end
+  object ShowBorder: TCheckBox
+    Left = 112
+    Height = 19
+    Top = 268
+    Width = 20
+    TabOrder = 9
+  end
+  object Label3: TLabel
+    Left = 8
+    Height = 15
+    Top = 270
+    Width = 67
+    Caption = 'Show Bor&der'
+    FocusControl = ShowBorder
+    ParentColor = False
+  end
+  object LineIndent: TLabeledEdit
+    Left = 483
+    Height = 23
+    Top = 272
+    Width = 48
+    EditLabel.Height = 15
+    EditLabel.Width = 59
+    EditLabel.Caption = 'Line &Indent'
+    EditLabel.ParentColor = False
+    LabelPosition = lpLeft
+    LabelSpacing = 4
+    TabOrder = 22
+    Text = 'LineIndent'
+  end
+  object AutoMerge: TCheckBox
+    Left = 414
+    Height = 19
+    Top = 308
+    Width = 83
+    BidiMode = bdRightToLeft
+    Caption = '&Auto Merge'
+    ParentBidiMode = False
+    TabOrder = 23
+  end
+  object Label4: TLabel
+    Left = 8
+    Height = 15
+    Top = 140
+    Width = 71
+    Caption = 'Te&xt Font Size'
+    ParentColor = False
+  end
+  object CBTextSize: TComboBox
+    Left = 112
+    Height = 23
+    Top = 134
+    Width = 100
+    ItemHeight = 15
+    Items.Strings = (
+      '10'
+      '12'
+      '14'
+      '16'
+      '18'
+      '20'
+      '22'
+      '24'
+      '26'
+      '28'
+      '32'
+      '36'
+      '40'
+      '44'
+      '48'
+      '56'
+      '62'
+      '72'
+      '84'
+      '96'
+    )
+    TabOrder = 4
+    Text = 'CBTextSize'
+  end
+  object TextLinesPerScreen: TLabeledEdit
+    Left = 483
+    Height = 23
+    Top = 236
+    Width = 48
+    EditLabel.Height = 15
+    EditLabel.Width = 109
+    EditLabel.Caption = 'Text Lines Per Screen'
+    EditLabel.ParentColor = False
+    LabelPosition = lpLeft
+    LabelSpacing = 4
+    TabOrder = 21
+    Text = 'TextLinesPerScreen'
+  end
+  object SyncURL: TLabeledEdit
+    Left = 112
+    Height = 23
+    Top = 448
+    Width = 419
+    EditLabel.Height = 15
+    EditLabel.Hint = 'URL of the site to synchronise songs from'
+    EditLabel.Width = 71
+    EditLabel.Caption = '&Sync Site URL'
+    EditLabel.ParentColor = False
+    LabelPosition = lpLeft
+    LabelSpacing = 4
+    TabOrder = 26
+  end
+  object SyncUser: TLabeledEdit
+    Left = 112
+    Height = 23
+    Top = 480
+    Width = 419
+    EditLabel.Height = 15
+    EditLabel.Hint = 'Key for access to synchronisation site'
+    EditLabel.Width = 51
+    EditLabel.Caption = 'Sync &User'
+    EditLabel.ParentColor = False
+    LabelPosition = lpLeft
+    LabelSpacing = 4
+    TabOrder = 27
+    Text = 'SyncUser'
+  end
+  object SyncPass: TLabeledEdit
+    Left = 112
+    Height = 23
+    Top = 512
+    Width = 419
+    EditLabel.Height = 15
+    EditLabel.Width = 78
+    EditLabel.Caption = 'S&ync Password'
+    EditLabel.ParentColor = False
+    LabelPosition = lpLeft
+    LabelSpacing = 4
+    TabOrder = 28
+    Text = 'SyncPass'
+  end
+  object LBLDefBib: TLabel
+    Left = 8
+    Height = 15
+    Top = 424
+    Width = 67
+    Caption = 'Default &Bible'
+    ParentColor = False
+  end
+  object CBDefBible: TComboBox
+    Left = 112
+    Height = 23
+    Top = 416
+    Width = 200
+    ItemHeight = 15
+    TabOrder = 25
+    Text = 'CBDefBible'
+  end
+  object SetTextFont: TButton
+    Left = 8
+    Height = 25
+    Top = 102
+    Width = 96
+    Caption = 'Text Font'
+    OnClick = SetTextFontClick
+    TabOrder = 3
+  end
+  object TextFontSample: TLabel
+    Left = 112
+    Height = 15
+    Top = 106
+    Width = 91
+    Caption = 'TextFontSample'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object DeleteBible: TButton
+    Left = 320
+    Height = 25
+    Top = 416
+    Width = 96
+    Caption = 'Delete Bible'
+    OnClick = DeleteBibleClick
+    TabOrder = 29
+  end
+  object AllowRemoteControl: TCheckBox
+    Left = 360
+    Height = 19
+    Top = 344
+    Width = 137
+    BidiMode = bdRightToLeft
+    Caption = 'Allow Remote Control'
+    ParentBidiMode = False
+    TabOrder = 30
+  end
+  object GlobalHotkeys: TCheckBox
+    Left = 397
+    Height = 19
+    Top = 380
+    Width = 100
+    Alignment = taLeftJustify
+    Caption = 'Global Hotkeys'
+    TabOrder = 31
+  end
+  object SetBGImg: TButton
+    Left = 8
+    Height = 25
+    Top = 296
+    Width = 96
+    Caption = 'Def Background'
+    OnClick = SetBGImgClick
+    TabOrder = 32
+  end
+  object BGImg: TLabel
+    Left = 112
+    Height = 15
+    Top = 300
+    Width = 36
+    Caption = 'BGImg'
+    ParentColor = False
+  end
+  object FontDialog1: TFontDialog
+    Font.Style = [fsBold]
+    MinFontSize = 0
+    MaxFontSize = 0
+    Options = [fdNoSizeSel, fdNoStyleSel]
+    Left = 184
+    Top = 24
+  end
+  object ColorDialog1: TColorDialog
+    Color = clBlack
+    CustomColors.Strings = (
+      'ColorA=000000'
+      'ColorB=000080'
+      'ColorC=008000'
+      'ColorD=008080'
+      'ColorE=800000'
+      'ColorF=800080'
+      'ColorG=808000'
+      'ColorH=808080'
+      'ColorI=C0C0C0'
+      'ColorJ=0000FF'
+      'ColorK=00FF00'
+      'ColorL=00FFFF'
+      'ColorM=FF0000'
+      'ColorN=FF00FF'
+      'ColorO=FFFF00'
+      'ColorP=FFFFFF'
+      'ColorQ=C0DCC0'
+      'ColorR=F0CAA6'
+      'ColorS=F0FBFF'
+      'ColorT=A4A0A0'
+    )
+    Left = 248
+    Top = 168
+  end
+  object SelectDirectoryDialog1: TSelectDirectoryDialog
+    Left = 248
+    Top = 376
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 248
+    Top = 288
+  end
+end
